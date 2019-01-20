@@ -19,7 +19,7 @@ export default class Score {
 		this.bulletCount += 1;
 	}
 
-	updateLives() {
+	updateLives(object) {
 		this.lives -= 1;
 	}
 

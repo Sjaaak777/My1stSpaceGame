@@ -33,24 +33,16 @@ export default class Bullet {
 		}
 
 		this.position.y += this.speed / deltaTime;
-		if (this.position.y + this.height <= 64) {
-			//console.log(this.markedForDeletion);
-			//console.log("Loader " + this.bullets);
-			this.markedForDeletion = true;
-			//console.log(this.markedForDeletion);
-
-			return;
-		}
 
 		if (detectCollision(this, this.invader)) {
 			this.score.updateScore();
 			this.speed = -this.speed;
 			this.markedForDeletion = true;
-			//this.invader.markedForDeletion = true;
-			//	this.game.markInvader();
-			//this.gameObjects.splice(this.invader, 1);
-			//console.log("Magazijn " + this.bullets);
-			//console.log(this.invader);
+		}
+
+		if (detectCollision(this, this.tank)) {
+			this.score.updateLives(this);
+			this.markedForDeletion = true;
 		}
 	}
 }

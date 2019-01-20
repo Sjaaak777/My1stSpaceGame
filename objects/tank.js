@@ -14,8 +14,6 @@ export default class Tank {
 			y: game.gameHeight - this.height - 1
 		};
 		this.tank = game.tank;
-		//this.bullet = new Bullet(this.game);
-		//this.bullets = game.bullets;
 	}
 
 	moveLeft() {

@@ -15,9 +15,7 @@ export default class InputHandler {
 					break;
 				//DOWN: ARROW DOWN
 				case 40:
-					console.log("Bullet removed from array");
 					game.showObjects();
-					//game.bullets.splice(1, 1)
 					break;
 				//DOWN: SPACE
 				case 32:

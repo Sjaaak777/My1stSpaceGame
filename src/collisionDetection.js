@@ -5,18 +5,16 @@ export function detectCollision(object, otherObject) {
 	let leftOfObject = object.position.x + object.width;
 
 	let topOfOtherObject = otherObject.position.y;
-	let rightOftherObject = otherObject.position.x + otherObject.width;
+	let rightOfOtherObject = otherObject.position.x + otherObject.width;
 	let leftOfOtherObject = otherObject.position.x;
 	let bottomOfOtherObject = otherObject.position.y + otherObject.height;
 
 	if (
 		topOfObject <= bottomOfOtherObject &&
-		rightOfObject <= rightOftherObject &&
-		leftOfObject >= leftOfOtherObject &&
+		rightOfObject >= leftOfOtherObject &&
+		leftOfObject <= rightOfOtherObject &&
 		bottomOfObject >= topOfOtherObject
 	) {
-		//console.log(rightOftherObject);
-
 		return true;
 	} else {
 		return false;
