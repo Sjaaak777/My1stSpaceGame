@@ -38,6 +38,7 @@ export default class Bullet {
 			this.score.updateScore();
 			this.speed = -this.speed;
 			this.markedForDeletion = true;
+			this.invader.markedForDeletion = true;
 		}
 
 		if (detectCollision(this, this.tank)) {

@@ -26,7 +26,7 @@ export default class Invader {
 
 		if (this.position.x <= 0 || this.position.x >= this.gameWidth - this.width) {
 			this.speed = -this.speed;
-			this.markedForDeletion = true;
+			// this.markedForDeletion = true;
 		}
 	}
 }
