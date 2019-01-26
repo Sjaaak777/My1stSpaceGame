@@ -4,7 +4,7 @@ export default class Score {
 		this.gameHeight = game.gameHeight;
 		this.score = 0;
 		this.bulletCount = 0;
-		this.lives = 3;
+		this.accuracy = "00.00";
 		this.position = {
 			x: 5,
 			y: 20
@@ -19,8 +19,8 @@ export default class Score {
 		this.bulletCount += 1;
 	}
 
-	updateLives(object) {
-		this.lives -= 1;
+	updateAccuracy(object) {
+		this.accuracy = ((this.score / this.bulletCount) * 100).toFixed(2);
 	}
 
 	draw(ctx) {
@@ -29,9 +29,13 @@ export default class Score {
 		ctx.textAlign = "left";
 		ctx.fillText("Score: " + this.score, 0, this.position.y);
 		ctx.textAlign = "center";
-		ctx.fillText("Bullets Fired: " + this.bulletCount, this.gameWidth / 2, this.position.y);
+		ctx.fillText(
+			"Bullets Fired: " + this.bulletCount,
+			this.gameWidth / 2,
+			this.position.y
+		);
 		ctx.textAlign = "right";
-		ctx.fillText("Lives: " + this.lives, this.gameWidth, this.position.y);
+		ctx.fillText("S/A: " + this.accuracy, this.gameWidth, this.position.y);
 	}
 
 	update(deltaTime) {

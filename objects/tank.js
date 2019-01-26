@@ -30,15 +30,24 @@ export default class Tank {
 
 	shoot() {
 		this.game.bullets.push(new Bullet(this.game));
-		console.log(this.game);
 		this.game.score.updateBulletCount();
 	}
 
 	draw(ctx) {
 		ctx.fillStyle = this.color;
 		ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-		ctx.fillRect(this.position.x + 20, this.position.y - 10, this.width - 40, this.height);
-		ctx.fillRect(this.position.x + 30, this.position.y - 20, this.width - 60, this.height);
+		ctx.fillRect(
+			this.position.x + 20,
+			this.position.y - 10,
+			this.width - 40,
+			this.height
+		);
+		ctx.fillRect(
+			this.position.x + 30,
+			this.position.y - 20,
+			this.width - 60,
+			this.height
+		);
 	}
 
 	update(deltaTime) {

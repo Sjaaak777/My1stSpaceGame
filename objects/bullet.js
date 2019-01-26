@@ -1,9 +1,11 @@
 import { detectCollision } from "../src/collisionDetection";
+import Invader from "../objects/invader";
 
 export default class Bullet {
 	constructor(game) {
 		this.gameWidth = game.gameWidth;
 		this.gameHeight = game.gameHeight;
+		this.gameInvaders = game.invaders;
 		this.flag = false;
 		this.width = 7;
 		this.height = 10;
@@ -36,14 +38,22 @@ export default class Bullet {
 
 		if (detectCollision(this, this.invader)) {
 			this.score.updateScore();
+			this.score.updateAccuracy();
 			this.speed = -this.speed;
 			this.markedForDeletion = true;
-			this.invader.markedForDeletion = true;
 		}
 
 		if (detectCollision(this, this.tank)) {
-			this.score.updateLives(this);
+			this.score.updateAccuracy(this);
 			this.markedForDeletion = true;
+		}
+
+		if (
+			this.position.y <= this.gameHeight - this.gameHeight ||
+			this.position.y >= this.gameHeight
+		) {
+			this.markedForDeletion = true;
+			this.score.updateAccuracy();
 		}
 	}
 }

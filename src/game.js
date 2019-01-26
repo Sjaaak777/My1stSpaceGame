@@ -14,26 +14,32 @@ export default class Game {
 		this.tank = new Tank(this);
 		this.invader = new Invader(this);
 		this.bullets = [];
+		this.invaders = []; // To be implemented multiple invaders
 		this.score = new Score(this);
-		this.gameObjects = [this.invader, this.tank, this.score];
+		this.gameObjects = [this.tank, this.score, this.invader];
 		this.bullet = new Bullet(this);
 
-		console.log(this.gameObjects);
 		new InputHandler(this);
 	}
 
 	update(deltaTime) {
-		[...this.gameObjects, ...this.bullets].forEach(object => object.update(deltaTime));
-		this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion);
+		[...this.gameObjects, ...this.bullets, ...this.invaders].forEach(
+			object => object.update(deltaTime)
+		);
+		this.gameObjects = this.gameObjects.filter(
+			object => !object.markedForDeletion
+		);
 		this.bullets = this.bullets.filter(bullet => !bullet.markedForDeletion);
 	}
 
 	showObjects() {
-		console.log(this.gameObjects);
+		console.log(this.gameObjects, this.bullets, this.invaders);
 	}
 
 	draw(ctx) {
-		[...this.gameObjects, ...this.bullets].forEach(object => object.draw(ctx));
+		[...this.gameObjects, ...this.bullets, ...this.invaders].forEach(
+			object => object.draw(ctx)
+		);
 		let lines = 0;
 		for (lines = 0; lines < this.gameWidth; lines++) {
 			ctx.beginPath();
