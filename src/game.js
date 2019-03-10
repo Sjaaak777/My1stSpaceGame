@@ -18,7 +18,10 @@ export default class Game {
 		this.invaders = [];
 		this.bullets = [];
 
-		this.spawnInvaders(5);
+		this.spawnInvaders(5, 25, "#990"); // (amount, vertical offset in pixels)
+		//this.spawnInvaders(3, 55, "#940");
+		//this.spawnInvaders(2, 85, "#900");
+		
 	}
 
 	showCollidedObjects(collidedObjects) {
@@ -29,11 +32,11 @@ export default class Game {
 		console.log(this);
 	}
 
-	spawnInvaders(amountOfInvaders) {
+	spawnInvaders(amountOfInvaders, row, color) {
 		let i;
 
 		for (i = 1; i <= amountOfInvaders; i++) {
-			this.invaders.push(new Invader(this));
+			this.invaders.push(new Invader(this, row, color));
 			this.score.updateInvaders(1);
 		}
 	}

@@ -13,8 +13,12 @@ export default class Score {
 	updateScore() {
 		this.score += 1;
 		if (this.score === 3) {
-			this.game.spawnInvaders(10);
+			this.game.spawnInvaders(3, 55, "#940");
 			this.game.tank.upgradeTank();
+		}
+
+		if (this.score === 5) {
+			this.game.spawnInvaders(2, 85, "#900");
 		}
 	}
 

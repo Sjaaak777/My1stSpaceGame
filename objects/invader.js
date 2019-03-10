@@ -1,14 +1,15 @@
 export default class Invader {
-	constructor(game) {
+	constructor(game, row, color) {
 		this.game = game;
 		this.name = "Invader";
 		this.width = 50;
-		this.height = 30;
-		this.color = "#dd0";
+		this.height = 25;
+		this.color = color;
 		this.speed = Math.random() * -100;
+		this.row = row;
 		this.position = {
 			x: this.game.gameWidth / 2 - this.width / 2,
-			y: 25
+			y: this.row
 		};
 		this.markedForDeletion = false;
 	}
