@@ -1,13 +1,13 @@
 export default class Invader {
 	constructor(game) {
-		this.gameObjects = game.gameObjects;
-		this.gameWidth = game.gameWidth;
+		this.game = game;
+		this.name = "Invader";
 		this.width = 50;
 		this.height = 30;
 		this.color = "#dd0";
-		this.speed = 50;
+		this.speed = Math.random() * -100;
 		this.position = {
-			x: game.gameWidth / 2 - this.width / 2,
+			x: this.game.gameWidth / 2 - this.width / 2,
 			y: 25
 		};
 		this.markedForDeletion = false;
@@ -23,10 +23,13 @@ export default class Invader {
 			return;
 		}
 		this.position.x += this.speed / deltaTime;
-
+		if (this.markedForDeletion) {
+			this.game.score.updateScore();
+			this.game.score.updateInvaders(-1);
+		}
 		if (
 			this.position.x <= 0 ||
-			this.position.x >= this.gameWidth - this.width
+			this.position.x >= this.game.gameWidth - this.width
 		) {
 			this.speed = -this.speed;
 		}

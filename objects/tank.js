@@ -1,27 +1,48 @@
 import Bullet from "../objects/bullet";
 
+let firePower = 50;
+let speed = 5;
+
 export default class Tank {
 	constructor(game) {
 		this.game = game;
+		this.name = "Tank";
 		this.gameWidth = game.gameWidth;
 		this.width = 70;
 		this.height = 20;
 		this.color = "#090";
-		this.maxSpeed = 7;
+		this.firePower = firePower;
 		this.speed = 0;
 		this.position = {
 			x: game.gameWidth / 2 - this.width / 2,
 			y: game.gameHeight - this.height - 1
 		};
-		this.tank = game.tank;
+	}
+
+	changeColor() {
+		this.color = "#900";
 	}
 
 	moveLeft() {
-		this.speed = -this.maxSpeed;
+		this.speed = -speed;
+	}
+
+	upgradeTank() {
+		this.changeColor();
+		this.upgradeFirepower();
+		this.upgradeSpeed();
+	}
+
+	upgradeSpeed() {
+		speed = 10;
+	}
+
+	upgradeFirepower() {
+		firePower += 50;
 	}
 
 	moveRight() {
-		this.speed = +this.maxSpeed;
+		this.speed = +speed;
 	}
 
 	stop() {
@@ -29,7 +50,7 @@ export default class Tank {
 	}
 
 	shoot() {
-		this.game.bullets.push(new Bullet(this.game));
+		this.game.bullets.push(new Bullet(this.game, firePower));
 		this.game.score.updateBulletCount();
 	}
 

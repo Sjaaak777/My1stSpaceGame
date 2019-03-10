@@ -4,19 +4,26 @@ export function detectCollision(object, otherObject) {
 	let bottomOfObject = object.position.y + object.height;
 	let leftOfObject = object.position.x + object.width;
 
-	let topOfOtherObject = otherObject.position.y;
-	let rightOfOtherObject = otherObject.position.x + otherObject.width;
-	let leftOfOtherObject = otherObject.position.x;
-	let bottomOfOtherObject = otherObject.position.y + otherObject.height;
+	otherObject.forEach(function(otherArrayObject) {
+		let topOfOtherObject = otherArrayObject.position.y;
+		let rightOfOtherObject =
+			otherArrayObject.position.x + otherArrayObject.width;
+		let leftOfOtherObject = otherArrayObject.position.x;
+		let bottomOfOtherObject =
+			otherArrayObject.position.y + otherArrayObject.height;
 
-	if (
-		topOfObject <= bottomOfOtherObject &&
-		rightOfObject >= leftOfOtherObject &&
-		leftOfObject <= rightOfOtherObject &&
-		bottomOfObject >= topOfOtherObject
-	) {
-		return true;
-	} else {
-		return false;
-	}
+		if (
+			topOfObject <= bottomOfOtherObject &&
+			rightOfObject >= leftOfOtherObject &&
+			leftOfObject <= rightOfOtherObject &&
+			bottomOfObject >= topOfOtherObject
+		) {
+			if (otherArrayObject.name === "Invader" && object.name === "Bullet") {
+				object.markedForDeletion = true;
+				otherArrayObject.markedForDeletion = true;
+				return true;
+			}
+		}
+	});
+	return false;
 }

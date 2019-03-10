@@ -1,7 +1,6 @@
 import InputHandler from "./input";
 import Tank from "../objects/tank";
 import Invader from "../objects/invader";
-import Bullet from "../objects/bullet";
 import Score from "../objects/score";
 
 export default class Game {
@@ -11,29 +10,32 @@ export default class Game {
 	}
 
 	start() {
-		this.tank = new Tank(this);
-		this.invader = new Invader(this);
-		this.bullets = [];
-		this.invaders = []; // To be implemented multiple invaders
-		this.score = new Score(this);
-		this.gameObjects = [this.tank, this.score, this.invader];
-		this.bullet = new Bullet(this);
-
 		new InputHandler(this);
+		this.score = new Score(this);
+		this.tank = new Tank(this);
+		this.gameObjects = [this.tank, this.score];
+
+		this.invaders = [];
+		this.bullets = [];
+
+		this.spawnInvaders(5);
 	}
 
-	update(deltaTime) {
-		[...this.gameObjects, ...this.bullets, ...this.invaders].forEach(
-			object => object.update(deltaTime)
-		);
-		this.gameObjects = this.gameObjects.filter(
-			object => !object.markedForDeletion
-		);
-		this.bullets = this.bullets.filter(bullet => !bullet.markedForDeletion);
+	showCollidedObjects(collidedObjects) {
+		console.log("collided Objects: " + collidedObjects);
 	}
 
 	showObjects() {
-		console.log(this.gameObjects, this.bullets, this.invaders);
+		console.log(this);
+	}
+
+	spawnInvaders(amountOfInvaders) {
+		let i;
+
+		for (i = 1; i <= amountOfInvaders; i++) {
+			this.invaders.push(new Invader(this));
+			this.score.updateInvaders(1);
+		}
 	}
 
 	draw(ctx) {
@@ -49,5 +51,18 @@ export default class Game {
 			lines++;
 			lines++;
 		}
+	}
+
+	update(deltaTime) {
+		[...this.gameObjects, ...this.bullets, ...this.invaders].forEach(
+			object => object.update(deltaTime)
+		);
+		this.gameObjects = this.gameObjects.filter(
+			object => !object.markedForDeletion
+		);
+		this.bullets = this.bullets.filter(bullet => !bullet.markedForDeletion);
+		this.invaders = this.invaders.filter(
+			invader => !invader.markedForDeletion
+		);
 	}
 }
