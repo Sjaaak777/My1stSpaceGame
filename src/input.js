@@ -8,7 +8,7 @@ export default class InputHandler {
 					break;
 				//DOWN: ARROW UP
 				case 38:
-					game.spawnInvaders(3);
+					game.spawnInvaders(2, 115, "#009");
 					break;
 				//DOWN: RIGHT ARROW
 				case 39:

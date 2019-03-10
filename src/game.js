@@ -18,10 +18,7 @@ export default class Game {
 		this.invaders = [];
 		this.bullets = [];
 
-		this.spawnInvaders(5, 25, "#990"); // (amount, vertical offset in pixels)
-		//this.spawnInvaders(3, 55, "#940");
-		//this.spawnInvaders(2, 85, "#900");
-		
+		this.spawnInvaders(5, 25, "#990"); // (amount, vertical offset in pixels, color)
 	}
 
 	showCollidedObjects(collidedObjects) {

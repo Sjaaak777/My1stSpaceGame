@@ -1,7 +1,7 @@
 {
   "name": "myspaceinvaders01",
   "version": "1.0.0",
-  "description": "This my first attempt to create a 2D game without any additional libraries. The purpose is to program OOP with clean and less code possible.",
+  "description": "This my first attempt to create a 2D game without additional libraries. The purpose is to program OOP as clean and with less code possible.\n\nToDo:\n- UI to display game messages\n- Sound\n- Save HighScore\n- Multiplayer\n- Physics",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
