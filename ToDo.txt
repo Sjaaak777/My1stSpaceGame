@@ -1,0 +1,7 @@
+- Sound.
+- User Interface.
+- Multiplayer.
+- Online Multiplayer.
+- Saving High scores.
+- Physics.
+

@@ -1,7 +1,9 @@
+import GameLogic from "./logic";
+import PhysicsEngine from "./physics";
 import InputHandler from "./input";
 import Tank from "../objects/tank";
 import Invader from "../objects/invader";
-import Score from "../objects/score";
+import UI from "../objects/ui";
 
 export default class Game {
 	constructor(gameWidth, gameHeight) {
@@ -11,31 +13,23 @@ export default class Game {
 
 	start() {
 		new InputHandler(this);
-		this.score = new Score(this);
+		this.gameLogic = new GameLogic(this);
+		this.physicsEngine = new PhysicsEngine(this);
+		this.ui = new UI(this);
 		this.tank = new Tank(this);
-		this.gameObjects = [this.tank, this.score];
-
+		this.invader = new Invader(this);
+		this.gameObjects = [this.tank, this.ui];
 		this.invaders = [];
 		this.bullets = [];
-
-		this.spawnInvaders(5, 25, "#990"); // (amount, vertical offset in pixels, color)
+		this.invader.spawnInvaders(5, 25, "#990"); // (amount, vertical offset in pixels, color)
 	}
 
 	showCollidedObjects(collidedObjects) {
 		console.log("collided Objects: " + collidedObjects);
 	}
 
-	showObjects() {
+	showAllObjects() {
 		console.log(this);
-	}
-
-	spawnInvaders(amountOfInvaders, row, color) {
-		let i;
-
-		for (i = 1; i <= amountOfInvaders; i++) {
-			this.invaders.push(new Invader(this, row, color));
-			this.score.updateInvaders(1);
-		}
 	}
 
 	draw(ctx) {
@@ -64,5 +58,7 @@ export default class Game {
 		this.invaders = this.invaders.filter(
 			invader => !invader.markedForDeletion
 		);
+
+		this.gameLogic.checkGamestate();
 	}
 }

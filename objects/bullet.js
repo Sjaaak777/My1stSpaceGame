@@ -1,4 +1,4 @@
-import { detectCollision } from "../src/collisionDetection";
+//import { detectCollision } from "../src/collisionDetection";
 
 export default class Bullet {
 	constructor(game, speed) {
@@ -27,7 +27,7 @@ export default class Bullet {
 
 		this.position.y += this.speed / deltaTime;
 
-		if (detectCollision(this, this.game.invaders)) {
+		if (this.game.physicsEngine.detectCollision(this, this.game.invaders)) {
 		}
 
 		if (

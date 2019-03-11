@@ -1,0 +1,11 @@
+GameLogic Class:
+Tried to experiment with a GameLogic class where all the logic is stored like: 
+when score === 3, then spawn invaders. However the GameLogic class needs to check all the time, so every frame
+if an event is true. Therefore I putted all the logic in the update() method. So as long as the score === 3,
+the game keeps spawning invaders.
+Therefore I return to the previous way and this is: Bullet spawn > hit Invader (true) > 
+mark bullet for deletion > update score (once) because bullet is removed after first hit > spawn invaders.
+
+
+
+

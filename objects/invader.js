@@ -8,10 +8,19 @@ export default class Invader {
 		this.speed = Math.random() * -100;
 		this.row = row;
 		this.position = {
-			x: this.game.gameWidth / 2 - this.width / 2,
+			x: game.gameWidth / 2 - this.width / 2,
 			y: this.row
 		};
 		this.markedForDeletion = false;
+	}
+
+	spawnInvaders(amountOfInvaders, row, color) {
+		let i;
+
+		for (i = 1; i <= amountOfInvaders; i++) {
+			this.game.invaders.push(new Invader(this.game, row, color));
+			this.game.ui.updateInvaders(1);
+		}
 	}
 
 	draw(ctx) {
@@ -23,10 +32,11 @@ export default class Invader {
 		if (!deltaTime) {
 			return;
 		}
+
 		this.position.x += this.speed / deltaTime;
 		if (this.markedForDeletion) {
-			this.game.score.updateScore();
-			this.game.score.updateInvaders(-1);
+			this.game.ui.updateScore();
+			this.game.ui.updateInvaders(-1);
 		}
 		if (
 			this.position.x <= 0 ||

@@ -8,7 +8,7 @@ export default class InputHandler {
 					break;
 				//DOWN: ARROW UP
 				case 38:
-					game.spawnInvaders(2, 115, "#009");
+					game.invader.spawnInvaders(2, 115, "#099");
 					break;
 				//DOWN: RIGHT ARROW
 				case 39:
@@ -16,8 +16,7 @@ export default class InputHandler {
 					break;
 				//DOWN: ARROW DOWN
 				case 40:
-					game.tank.upgradeTank();
-					game.showObjects();
+					game.showAllObjects();
 					break;
 				//DOWN: SPACE
 				case 32:

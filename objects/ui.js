@@ -1,4 +1,4 @@
-export default class Score {
+export default class UI {
 	constructor(game) {
 		this.game = game;
 		this.score = 0;
@@ -13,19 +13,29 @@ export default class Score {
 	updateScore() {
 		this.score += 1;
 		if (this.score === 3) {
-			this.game.spawnInvaders(3, 55, "#940");
-			this.game.tank.upgradeTank();
+			this.game.invader.spawnInvaders(3, 55, "#940");
+			this.game.tank.changeColor("#700");
 		}
-
 		if (this.score === 5) {
-			this.game.spawnInvaders(2, 85, "#900");
+			this.game.invader.spawnInvaders(4, 85, "#900");
+			this.game.tank.upgradeSpeed();
+			this.game.tank.changeColor("#770");
+		}
+		if (this.score === 7) {
+			this.game.invader.spawnInvaders(5, 115, "#099");
+			this.game.tank.upgradeFirepower();
+			this.game.tank.changeColor("#777");
+		}
+		if (this.score === 10) {
+			this.game.invader.spawnInvaders(3, 55, "#940");
+			this.game.invader.spawnInvaders(4, 85, "#900");
+			this.game.invader.spawnInvaders(5, 115, "#099");
+			this.game.tank.changeColor("#FFF");
 		}
 	}
-
 	updateBulletCount() {
 		this.bulletCount += 1;
 	}
-
 	updateInvaders(counter) {
 		this.invadersCount += counter;
 	}

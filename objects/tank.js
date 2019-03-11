@@ -19,39 +19,27 @@ export default class Tank {
 		};
 	}
 
-	changeColor() {
-		this.color = "#900";
-	}
-
 	moveLeft() {
-		this.speed = -speed;
+		this.game.tank.speed = -speed;
 	}
-
-	upgradeTank() {
-		this.changeColor();
-		this.upgradeFirepower();
-		this.upgradeSpeed();
-	}
-
-	upgradeSpeed() {
-		speed = 10;
-	}
-
-	upgradeFirepower() {
-		firePower += 50;
-	}
-
 	moveRight() {
 		this.speed = +speed;
 	}
-
 	stop() {
 		this.speed = 0;
 	}
-
 	shoot() {
 		this.game.bullets.push(new Bullet(this.game, firePower));
-		this.game.score.updateBulletCount();
+		this.game.ui.updateBulletCount();
+	}
+	changeColor(color) {
+		this.color = color;
+	}
+	upgradeSpeed() {
+		speed = 10;
+	}
+	upgradeFirepower() {
+		firePower += 50;
 	}
 
 	draw(ctx) {
