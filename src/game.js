@@ -4,6 +4,7 @@ import InputHandler from "./input";
 import Tank from "../objects/tank";
 import Invader from "../objects/invader";
 import UI from "../objects/ui";
+import Sound from "./sound";
 
 export default class Game {
 	constructor(gameWidth, gameHeight) {
@@ -13,6 +14,7 @@ export default class Game {
 
 	start() {
 		new InputHandler(this);
+		this.sound = new Sound(this);
 		this.gameLogic = new GameLogic(this);
 		this.physicsEngine = new PhysicsEngine(this);
 		this.ui = new UI(this);

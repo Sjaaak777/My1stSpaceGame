@@ -31,6 +31,7 @@ export default class Tank {
 	shoot() {
 		this.game.bullets.push(new Bullet(this.game, firePower));
 		this.game.ui.updateBulletCount();
+		this.game.sound.playLaser();
 	}
 	changeColor(color) {
 		this.color = color;

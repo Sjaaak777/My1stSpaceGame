@@ -21,6 +21,7 @@ export default class InputHandler {
 				//DOWN: SPACE
 				case 32:
 					game.tank.shoot();
+
 					break;
 			}
 		});

@@ -30,10 +30,4 @@ export default class PhysicsEngine {
 		});
 		return false;
 	}
-
-	// update(deltaTime) {
-	// 	if (!deltaTime) return;
-
-	// 	console.log("from events");
-	// }
 }

@@ -36,6 +36,7 @@ export default class Invader {
 		this.position.x += this.speed / deltaTime;
 		if (this.markedForDeletion) {
 			this.game.ui.updateScore();
+			this.game.sound.playBoom();
 			this.game.ui.updateInvaders(-1);
 		}
 		if (
