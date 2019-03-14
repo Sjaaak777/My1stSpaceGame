@@ -1,4 +1,5 @@
 import Bullet from "../objects/bullet";
+import Sound from "../src/sound";
 
 let firePower = 50;
 let speed = 5;
@@ -17,6 +18,7 @@ export default class Tank {
 			x: game.gameWidth / 2 - this.width / 2,
 			y: game.gameHeight - this.height - 1
 		};
+		this.markedForDeletion = false;
 	}
 
 	moveLeft() {
@@ -33,6 +35,7 @@ export default class Tank {
 		this.game.ui.updateBulletCount();
 		this.game.sound.playLaser();
 	}
+
 	changeColor(color) {
 		this.color = color;
 	}
@@ -41,6 +44,11 @@ export default class Tank {
 	}
 	upgradeFirepower() {
 		firePower += 50;
+	}
+
+	reset() {
+		speed = 5;
+		firePower = 50;
 	}
 
 	draw(ctx) {

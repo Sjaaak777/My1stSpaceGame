@@ -1,5 +1,3 @@
-//import { detectCollision } from "../src/collisionDetection";
-
 export default class Bullet {
 	constructor(game, speed) {
 		this.game = game;

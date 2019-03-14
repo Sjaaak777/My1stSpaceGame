@@ -4,3 +4,6 @@ Done: - Sound.
 - Online Multiplayer.
 - Saving High scores.
 - Physics.
+
+
+- Clean up the code!

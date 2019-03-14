@@ -17,12 +17,16 @@ export default class InputHandler {
 				//DOWN: ARROW DOWN
 				case 40:
 					game.showAllObjects();
+					game.sound.spawnSound();
 					break;
 				//DOWN: SPACE
 				case 32:
 					game.tank.shoot();
-
+					//DOWN SPACE
 					break;
+				case 13:
+					game.sound = null;
+					window.location.reload();
 			}
 		});
 

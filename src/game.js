@@ -1,10 +1,10 @@
-import GameLogic from "./logic";
 import PhysicsEngine from "./physics";
 import InputHandler from "./input";
 import Tank from "../objects/tank";
 import Invader from "../objects/invader";
 import UI from "../objects/ui";
 import Sound from "./sound";
+import Laser from "../sounds/laser.ogg";
 
 export default class Game {
 	constructor(gameWidth, gameHeight) {
@@ -14,8 +14,8 @@ export default class Game {
 
 	start() {
 		new InputHandler(this);
+		this.laser = Laser;
 		this.sound = new Sound(this);
-		this.gameLogic = new GameLogic(this);
 		this.physicsEngine = new PhysicsEngine(this);
 		this.ui = new UI(this);
 		this.tank = new Tank(this);
@@ -53,14 +53,15 @@ export default class Game {
 		[...this.gameObjects, ...this.bullets, ...this.invaders].forEach(
 			object => object.update(deltaTime)
 		);
+
 		this.gameObjects = this.gameObjects.filter(
 			object => !object.markedForDeletion
 		);
+
 		this.bullets = this.bullets.filter(bullet => !bullet.markedForDeletion);
+
 		this.invaders = this.invaders.filter(
 			invader => !invader.markedForDeletion
 		);
-
-		this.gameLogic.checkGamestate();
 	}
 }
