@@ -1,5 +1,4 @@
 import Bullet from "../objects/bullet";
-import Sound from "../src/sound";
 
 let firePower = 50;
 let speed = 5;

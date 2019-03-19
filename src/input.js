@@ -8,7 +8,6 @@ export default class InputHandler {
 					break;
 				//DOWN: ARROW UP
 				case 38:
-					game.invader.spawnInvaders(2, 115, "#099");
 					break;
 				//DOWN: RIGHT ARROW
 				case 39:
@@ -17,7 +16,6 @@ export default class InputHandler {
 				//DOWN: ARROW DOWN
 				case 40:
 					game.showAllObjects();
-					game.sound.spawnSound();
 					break;
 				//DOWN: SPACE
 				case 32:
@@ -27,6 +25,8 @@ export default class InputHandler {
 				case 13:
 					game.sound = null;
 					window.location.reload();
+					default:
+					//No default set on purpose
 			}
 		});
 
